@@ -1,22 +1,18 @@
 package com.example.jetpackdemo
 
-import android.content.Context
+
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -81,28 +77,15 @@ fun LoginUi() {
         )
         Spacer(modifier = Modifier.height(34.dp))
         Column(Modifier.padding(horizontal = 20.dp)){
-            CustomTextField(txtHint = "Enter your Email ID", onvalueChange = {
+            CustomTextField(txtHint = "Enter your Email ID", onValueChange = {
                 email = it
             }, value = email)
             Spacer(modifier = Modifier.height(10.dp))
-            CustomTextField(txtHint = "Enter your Password", onvalueChange = {
+            CustomTextField(txtHint = "Enter your Password", onValueChange = {
                 password = it
             }, value = password)
             Spacer(modifier = Modifier.height(10.dp))
-            Button(
-                onClick = {
-                          makeToast(mcontext,email,password)
-                },
-                modifier = Modifier
-                    .clip(RoundedCornerShape(30))
-                    .fillMaxWidth(),
-            ) {
-                Text(
-                    text = "Login",
-                    color = Color.Green,
-                    style = TextStyle(fontSize = 30.sp)
-                )
-            }
+            CustomButtonWithSendValue(txtBtn = "Login", mContext = mcontext, nextActivity = BoxLayoutActivity::class.java, value = email)
             Spacer(modifier = Modifier.height(10.dp))
         }
         Column(
@@ -111,16 +94,14 @@ fun LoginUi() {
                 .fillMaxWidth()
                 .padding(end = 10.dp)
         ) {
-            TextButton(onClick = { makeToast(mcontext,email,password) }) {
+            TextButton(onClick = { makeToast(mcontext,"$email $password") }) {
                 Text("Forgot Password?", style = TextStyle(color = Color.Blue, fontWeight = FontWeight.Medium, fontStyle = FontStyle.Italic, fontSize = 25.sp))
             }
         }
     }
 }
 
-fun makeToast(context: Context,em:String,pass:String){
-    Toast.makeText(context,"Login button clicked $em $pass",Toast.LENGTH_LONG).show()
-}
+
 
 @Preview(showBackground = true)
 @Composable
