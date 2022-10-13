@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -22,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CustomTextField(txtHint:String, onValueChange:(String)->Unit, value:String){
+fun CustomTextField(txtHint:String, onValueChange:(String)->Unit, value:String,icon:ImageVector){
     TextField(
         value = value,
         onValueChange = onValueChange,
@@ -35,7 +36,8 @@ fun CustomTextField(txtHint:String, onValueChange:(String)->Unit, value:String){
             disabledIndicatorColor = Color.Transparent
         ),
         placeholder = { Text(text = txtHint) },
-        label = { Text(text = txtHint)}
+        label = { Text(text = txtHint)},
+        leadingIcon = {Icon(icon,"PlaceHolder icon")}
     )
 }
 

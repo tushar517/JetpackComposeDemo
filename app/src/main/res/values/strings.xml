@@ -2,4 +2,5 @@
     <string name="app_name">JetpackDemo</string>
     <string name="title_activity_box_layout">BoxLayout</string>
     <string name="title_activity_lazy_list">LazyListActivity</string>
+    <string name="title_activity_tab_layout">TabLayoutActivity</string>
 </resources>

@@ -97,6 +97,9 @@ fun Greeting() {
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                 }
+                item {
+                    CustomButton(txtBtn = "TabLayout Activity",TabLayoutActivity::class.java,mContext)
+                }
             }
         },
         bottomBar = {

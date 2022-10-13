@@ -10,6 +10,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -79,11 +82,15 @@ fun LoginUi() {
         Column(Modifier.padding(horizontal = 20.dp)){
             CustomTextField(txtHint = "Enter your Email ID", onValueChange = {
                 email = it
-            }, value = email)
+            }, value = email,
+                icon = Icons.Default.Email
+            )
             Spacer(modifier = Modifier.height(10.dp))
             CustomTextField(txtHint = "Enter your Password", onValueChange = {
                 password = it
-            }, value = password)
+            }, value = password,
+                icon = Icons.Default.Lock
+            )
             Spacer(modifier = Modifier.height(10.dp))
             CustomButtonWithSendValue(txtBtn = "Login", mContext = mcontext, nextActivity = BoxLayoutActivity::class.java, value = email)
             Spacer(modifier = Modifier.height(10.dp))
