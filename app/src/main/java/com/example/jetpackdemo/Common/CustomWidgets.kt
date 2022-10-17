@@ -2,8 +2,10 @@ package com.example.jetpackdemo
 
 import android.content.Context
 import android.content.Intent
+import android.util.Patterns
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -59,17 +61,23 @@ fun CustomButton(txtBtn: String, nextActivity:Class<*>, mContext: Context){
 
 
 @Composable
-fun CustomButtonWithSendValue(txtBtn: String, nextActivity:Class<*>, mContext: Context, value:String){
+fun CustomButtonWithSendValue(txtBtn: String, nextActivity:Class<*>, mContext: Context, value:String,enable:Boolean){
     Button(
         onClick = { startNewActivityWithValue(context = mContext,nextActivity,value) },
         modifier = Modifier
             .clip(RoundedCornerShape(30))
             .fillMaxWidth(),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color.Green,
+            disabledContentColor = Color.Green,
+            contentColor = Color.Black,
+            disabledBackgroundColor = Color.Gray
+        ),
+        enabled = enable
     ) {
         Text(
             text = txtBtn,
-            color = Color.Green,
-            style = TextStyle(fontSize = 30.sp)
+            style = TextStyle(fontSize = 30.sp),
         )
     }
 }
@@ -121,4 +129,23 @@ fun startNewActivityWithValue(context: Context, nextActivity:Class<*>, msg:Strin
 
 fun makeToast(context: Context,msg:String){
     Toast.makeText(context,"$msg",Toast.LENGTH_LONG).show()
+}
+
+
+@Composable
+fun CustomTextView(color:Color?){
+    Text(
+        text = "hi",
+        style = TextStyle(
+            color = color?:Color.Black
+        )
+    )
+}
+
+fun validation(email:String,password:String):Boolean{
+    return !(
+            email.isNullOrEmpty() ||
+            password.isNullOrEmpty() ||
+            password.length<5
+            )
 }

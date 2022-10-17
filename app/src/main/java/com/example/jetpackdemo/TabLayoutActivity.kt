@@ -1,6 +1,7 @@
 package com.example.jetpackdemo
 
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -42,6 +43,10 @@ fun Greeting2() {
     var tabIndex by remember {
         mutableStateOf(0)
     }
+    val homeScreen = HomeScreen()
+    val profileScreen = ProfileScreen()
+    val settingsScreen = SettingScreen()
+
     val tabTitles = listOf("Home", "Profile", "Settings")
     val tabIcons = listOf<ImageVector>(
         Icons.Default.Home,Icons.Default.Person, Icons.Default.Settings)
